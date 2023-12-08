@@ -13,8 +13,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          {/* <Route index path='/' element={<Home />} /> */}
-          <Route path='/' element={<Destination />} />
+          <Route index path='/' element={<Home />} />
+          <Route path='/destination' element={<Destination />} />
         </Routes>
       </BrowserRouter>
     </>

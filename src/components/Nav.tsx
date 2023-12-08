@@ -1,10 +1,22 @@
-const Nav = () => {
+import { useState } from "react"
+import NavItems from "./NavItems"
+import MobileNav from "./MobileNav"
+
+const Nav:React.FC = () => {
+
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const handleToggle = () => {
+        setIsOpen((prevIsOpen) => !prevIsOpen)
+        console.log(isOpen)
+    }
+
     return (
         <>
             {/* <nav className='flex justify-between mt-10 items-center fixed z-20 w-full'> */}
             <nav className='flex fixed z-20 w-full justify-between items-center p-10 md:p-0 lg:mt-10'>
                 {/* logo */}
-                <div className="md:ml-14">
+                <div className="md:ml-14 cursor-pointer">
                     <img src='../../assets/shared/logo.svg' />
                 </div>
 
@@ -18,15 +30,15 @@ const Nav = () => {
                     md:flex md:bg-[#151923] md:gap-5 md:px-20 font-barlow 
                     lg:px-36 lg:bg-[#979797] lg:space-x-12 lg:bg-opacity-10 lg:backdrop-blur                  
                 '>
-                    <li className="py-8 cursor-pointer border-b-4 border-tropicalBlue border-opacity-0 hover:border-white transition ease-in-out delay-75"><span className="hidden lg:inline-block font-barlow font-bold mr-2">00</span> HOME</li>
-                    <li className="py-8 cursor-pointer border-b-4 border-tropicalBlue border-opacity-0 hover:border-white transition ease-in-out delay-75"><span className="hidden lg:inline-block font-barlow font-bold mr-2">01</span> DESTINATION</li>
-                    <li className="py-8 cursor-pointer border-b-4 border-tropicalBlue border-opacity-0 hover:border-white transition ease-in-out delay-75"><span className="hidden lg:inline-block font-barlow font-bold mr-2">02</span> CREW</li>
-                    <li className="py-8 cursor-pointer border-b-4 border-tropicalBlue border-opacity-0 hover:border-white transition ease-in-out delay-75"><span className="hidden lg:inline-block font-barlow font-bold mr-2">03</span> TECHNOLOGY</li>
+                    <NavItems />
                 </ul>
-                <div className="cursor-pointer md:hidden">
+
+                {/* Hamburger Icon */}
+                <div onClick={handleToggle} className="cursor-pointer md:hidden">
                     <img src="../../assets/shared/icon-hamburger.svg" />
                 </div>
             </nav>
+            <MobileNav handleToggle={handleToggle} isOpen={isOpen}/>
         </>
     )
 }
