@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import NavItems from "./NavItems"
 import MobileNav from "./MobileNav"
 
-const Nav:React.FC = () => {
+const Nav: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -17,7 +18,9 @@ const Nav:React.FC = () => {
             <nav className='flex fixed z-20 w-full justify-between items-center p-10 md:p-0 lg:mt-10'>
                 {/* logo */}
                 <div className="md:ml-14 cursor-pointer">
-                    <img src='../../assets/shared/logo.svg' />
+                    <Link to="/">
+                        <img src='../../assets/shared/logo.svg' />
+                    </Link>
                 </div>
 
                 {/* nav line */}
@@ -38,7 +41,7 @@ const Nav:React.FC = () => {
                     <img src="../../assets/shared/icon-hamburger.svg" />
                 </div>
             </nav>
-            <MobileNav handleToggle={handleToggle} isOpen={isOpen}/>
+            <MobileNav handleToggle={handleToggle} isOpen={isOpen} />
         </>
     )
 }
