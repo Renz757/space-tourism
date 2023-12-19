@@ -1,16 +1,14 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import NavItems from "./NavItems"
 import MobileNav from "./MobileNav"
 
-const Nav: React.FC = () => {
+interface NavProps {
+    isOpen: boolean,
+    handleToggle: () => void
+}
 
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+const Nav: React.FC<NavProps> = ({isOpen, handleToggle}) => {
 
-    const handleToggle = () => {
-        setIsOpen((prevIsOpen) => !prevIsOpen)
-        console.log(isOpen)
-    }
 
     return (
         <>
