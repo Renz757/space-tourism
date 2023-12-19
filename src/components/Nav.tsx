@@ -15,7 +15,7 @@ const Nav: React.FC<NavProps> = ({isOpen, handleToggle}) => {
             {/* <nav className='flex justify-between mt-10 items-center fixed z-20 w-full'> */}
             <nav className='flex fixed z-20 w-full justify-between items-center p-10 md:p-0 lg:mt-10'>
                 {/* logo */}
-                <div className="md:ml-14 cursor-pointer">
+                <div onClick={() => {if (isOpen) handleToggle()}} className="md:ml-14 cursor-pointer">
                     <Link to="/">
                         <img src='../../assets/shared/logo.svg' />
                     </Link>
@@ -31,7 +31,7 @@ const Nav: React.FC<NavProps> = ({isOpen, handleToggle}) => {
                     md:flex md:bg-[#151923] md:gap-5 md:px-20 font-barlow 
                     lg:px-36 lg:bg-[#979797] lg:space-x-12 lg:bg-opacity-10 lg:backdrop-blur                  
                 '>
-                    <NavItems />
+                    <NavItems isOpen={isOpen} handleToggle={handleToggle}/>
                 </ul>
 
                 {/* Hamburger Icon */}
